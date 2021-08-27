@@ -24,7 +24,7 @@ class AppController extends Controller
             $user = $storage->getUserData($this->userId);
         }
         
-        if ($this->message !== $user['lastMessage']) {
+        if (!isset($user['lastMessage']) || $this->message !== $user['lastMessage']) {
             $storage->setUserData($this->userId, ['lastMessage' => $this->message]);
 
             if ($this->message === '/start') $response->greating($user);

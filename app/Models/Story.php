@@ -34,8 +34,9 @@ class Story
     {
         $response = new ResponseService($telegram);
         $story = $this->getStory($user['story']);
+        $message = [];
 
-        $message = self::parseStory($story[$answer]['message']);
+        if (isset($story[$answer]['message'])) $message = self::parseStory($story[$answer]['message']);
 
         $end = 0;
         if (isset($story[$answer]['choice'])) $end = 1;
