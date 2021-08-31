@@ -52,6 +52,7 @@ class Controller
     {
         $this->telegram = App::getTelegram();
         $this->info = $this->telegram->getWebhookUpdates();
+        App::log(print_r($this->info['message'], true), 'messages');
         $this->userId = $this->info['message']['from']['id'];
         $this->chatId = $this->info['message']['chat']['id'];
         $this->username = $this->info['message']['from']['username'];
